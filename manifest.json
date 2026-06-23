@@ -1,0 +1,22 @@
+{
+  "name": "Marlon Cardona — Product Designer",
+  "short_name": "Marlon Cardona",
+  "description": "Portfolio de design de produto de Marlon Cardona.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0D0D0B",
+  "background_color": "#0D0D0B",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

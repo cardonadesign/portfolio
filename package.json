@@ -1,0 +1,16 @@
+{
+  "name": "project-portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . --listen 3000",
+    "build:analytics": "esbuild js/clarity-init.js --bundle --outfile=js/clarity.bundle.js --format=iife --minify",
+    "postinstall": "npm run build:analytics",
+    "hash-password": "node scripts/hash-password.js"
+  },
+  "dependencies": {
+    "@microsoft/clarity": "^1.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

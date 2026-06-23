@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Marlon Cardona</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Painel de administração do portfólio.">
+  <link rel="icon" href="/favicon.ico">
+  <script src="config/project-access.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0D0D0B;
+      color: #F0EFE9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    /* ── Gate ─────────────────────────────────────────────────────────────── */
+    #admin-gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .gate-inner {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .gate-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8C8A83;
+      margin-bottom: 1.25rem;
+    }
+
+    .gate-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+
+    .gate-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-field-label {
+      font-size: 12px;
+      color: #8C8A83;
+    }
+
+    .gate-input {
+      width: 100%;
+      background: #161614;
+      border: 1px solid #252522;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: #F0EFE9;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 180ms ease;
+    }
+
+    .gate-input:focus { border-color: #5A5854; }
+
+    .gate-error {
+      font-size: 13px;
+      color: #f87171;
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-submit {
+      width: 100%;
+      background: #F0EFE9;
+      color: #0D0D0B;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 180ms ease;
+      margin-top: 0.75rem;
+    }
+
+    .gate-submit:hover { opacity: 0.85; }
+
+    .gate-back {
+      display: block;
+      margin-top: 1.5rem;
+      color: #8C8A83;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 180ms ease;
+    }
+
+    .gate-back:hover { color: #F0EFE9; }
+
+    /* ── Panel ─────────────────────────────────────────────────────────────── */
+    #admin-panel {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      gap: 1rem;
+    }
+
+    .panel-title-group {}
+
+    .panel-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8C8A83;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .panel-back {
+      color: #8C8A83;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 180ms ease;
+      white-space: nowrap;
+      padding-top: 0.25rem;
+    }
+
+    .panel-back:hover { color: #F0EFE9; }
+
+    /* ── Project cards ─────────────────────────────────────────────────────── */
+    #projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-card {
+      border: 1px solid #252522;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      background: #161614;
+      transition: border-color 180ms ease;
+    }
+
+    .project-card.is-locked { border-color: rgba(248, 113, 113, 0.2); }
+    .project-card.is-unlocked { border-color: rgba(74, 222, 128, 0.2); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .card-id {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5A5854;
+    }
+
+    .card-name {
+      font-size: 14px;
+      color: #F0EFE9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Toggle switch */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-label-text {
+      font-size: 12px;
+      color: #8C8A83;
+      min-width: 58px;
+      text-align: right;
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: #252522;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+
+    .toggle-slider::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #8C8A83;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 200ms ease, background 200ms ease;
+    }
+
+    input:checked ~ .toggle-slider {
+      background: rgba(248, 113, 113, 0.15);
+      border: 1px solid rgba(248, 113, 113, 0.4);
+    }
+
+    input:checked ~ .toggle-slider::after {
+      transform: translateX(20px);
+      background: #f87171;
+    }
+
+    /* Password row */
+    .card-password {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #252522;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .card-password-label {
+      font-size: 12px;
+      color: #8C8A83;
+      flex-shrink: 0;
+    }
+
+    .card-password-input {
+      flex: 1;
+      background: #0D0D0B;
+      border: 1px solid #252522;
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      color: #F0EFE9;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      outline: none;
+      transition: border-color 180ms ease;
+    }
+
+    .card-password-input:focus { border-color: #5A5854; }
+    .card-password-input::placeholder { color: #5A5854; }
+
+    /* ── Actions ───────────────────────────────────────────────────────────── */
+    .panel-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: opacity 180ms ease;
+    }
+
+    .btn:hover { opacity: 0.8; }
+
+    .btn-primary {
+      background: #F0EFE9;
+      color: #0D0D0B;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #8C8A83;
+      border: 1px solid #252522;
+    }
+
+    .btn-ghost:hover { color: #F0EFE9; border-color: #5A5854; opacity: 1; }
+
+    /* ── Output ────────────────────────────────────────────────────────────── */
+    #output-section {
+      margin-top: 2rem;
+      border: 1px solid #252522;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1.25rem;
+      background: #161614;
+      border-bottom: 1px solid #252522;
+    }
+
+    .output-filename {
+      font-size: 12px;
+      color: #8C8A83;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .output-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-sm {
+      padding: 0.35rem 0.75rem;
+      font-size: 12px;
+    }
+
+    #output-code {
+      display: block;
+      padding: 1.25rem;
+      background: #0D0D0B;
+      color: #8C8A83;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    .output-instruction {
+      padding: 0.875rem 1.25rem;
+      background: #161614;
+      border-top: 1px solid #252522;
+      font-size: 12px;
+      color: #5A5854;
+    }
+
+    /* Status dot */
+    .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    .dot-locked { background: #f87171; }
+    .dot-unlocked { background: #4ade80; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <!-- Gate -->
+  <div id="admin-gate">
+    <div class="gate-inner">
+      <p class="gate-label">Painel Administrativo</p>
+      <h1 class="gate-title">Controle de Acesso</h1>
+      <form id="gate-form">
+        <label class="gate-field">
+          <span class="gate-field-label">Senha admin</span>
+          <input type="password" class="gate-input" id="gate-input" autocomplete="current-password" required>
+        </label>
+        <p class="gate-error" id="gate-error" hidden>Senha incorreta. Tente novamente.</p>
+        <button type="submit" class="gate-submit">Entrar</button>
+      </form>
+      <a href="index.html" class="gate-back">← Voltar ao site</a>
+    </div>
+  </div>
+
+  <!-- Panel -->
+  <div id="admin-panel" hidden>
+    <div class="panel-header">
+      <div class="panel-title-group">
+        <p class="panel-label">Painel Administrativo</p>
+        <h1 class="panel-title">Controle de Acesso</h1>
+      </div>
+      <a href="index.html" class="panel-back">← Site</a>
+    </div>
+
+    <div id="projects-grid"></div>
+
+    <div class="panel-actions">
+      <button id="generate-btn" class="btn btn-primary">Gerar Configuração</button>
+      <button id="unlock-all-btn" class="btn btn-ghost">Liberar todos</button>
+      <button id="lock-all-btn" class="btn btn-ghost">Bloquear todos</button>
+    </div>
+
+    <div id="output-section" hidden>
+      <div class="output-header">
+        <span class="output-filename">config/project-access.js</span>
+        <div class="output-actions">
+          <button id="copy-btn" class="btn btn-ghost btn-sm">Copiar</button>
+          <button id="download-btn" class="btn btn-primary btn-sm">Download</button>
+        </div>
+      </div>
+      <code id="output-code"></code>
+      <p class="output-instruction">
+        Substitua o arquivo <strong>config/project-access.js</strong> e faça o deploy para aplicar as mudanças.
+      </p>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+node_modules/
+
+# Arquivos gerados pelo build — não commitar
+js/clarity.bundle.js
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Claude Code
+.claude/

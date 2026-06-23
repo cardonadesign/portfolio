@@ -184,26 +184,30 @@
   let targetMouse  = { x: 0.5, y: 0.5 };
   let currentMouse = { x: 0.5, y: 0.5 };
 
-  window.addEventListener('mousemove', e => {
+  function onMouseMove(e) {
     targetMouse.x =  e.clientX / window.innerWidth;
     targetMouse.y = 1.0 - e.clientY / window.innerHeight;
-  });
+  }
 
-  canvas.addEventListener('touchmove', e => {
+  function onTouchMove(e) {
     e.preventDefault();
     const touch = e.touches[0];
     targetMouse.x =  touch.clientX / window.innerWidth;
     targetMouse.y = 1.0 - touch.clientY / window.innerHeight;
-  }, { passive: false });
+  }
+
+  window.addEventListener('mousemove', onMouseMove);
+  canvas.addEventListener('touchmove', onTouchMove, { passive: false });
 
   // ── Resize ───────────────────────────────────────────────────────────────
 
-  new ResizeObserver(() => {
+  const resizeObserver = new ResizeObserver(() => {
     W = canvas.parentElement.offsetWidth;
     H = canvas.parentElement.offsetHeight;
     renderer.setSize(W, H);
     uniforms.u_resolution.value.set(W, H);
-  }).observe(canvas.parentElement);
+  });
+  resizeObserver.observe(canvas.parentElement);
 
   // ── Public API for gradient-editor.js ────────────────────────────────────
 
@@ -255,17 +259,33 @@
   }
 
   // Pause when hero scrolls out of view
+  let intersectionObserver = null;
   const hero = document.querySelector('.hero');
   if (hero && typeof IntersectionObserver !== 'undefined') {
-    new IntersectionObserver(entries => {
+    intersectionObserver = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
         if (!frameId) animate();
       } else {
         cancelAnimationFrame(frameId);
         frameId = null;
       }
-    }, { threshold: 0 }).observe(hero);
+    }, { threshold: 0 });
+    intersectionObserver.observe(hero);
   }
 
   animate();
+
+  // ── Cleanup on unload ─────────────────────────────────────────────────────
+
+  window.addEventListener('beforeunload', function () {
+    cancelAnimationFrame(frameId);
+    frameId = null;
+    resizeObserver.disconnect();
+    if (intersectionObserver) intersectionObserver.disconnect();
+    window.removeEventListener('mousemove', onMouseMove);
+    canvas.removeEventListener('touchmove', onTouchMove);
+    geometry.dispose();
+    material.dispose();
+    renderer.dispose();
+  });
 })();

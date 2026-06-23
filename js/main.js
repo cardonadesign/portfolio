@@ -51,37 +51,6 @@ if (!isTouch && dot && ring) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// HEADER SCROLL BEHAVIOR
-// ═══════════════════════════════════════════════════════════════════════════
-
-const header = document.querySelector('.site-header');
-
-if (header && !header.classList.contains('scrolled')) {
-  const hero    = document.querySelector('.hero');
-  const trigger = hero ? hero.offsetHeight * 0.75 : 80;
-
-  function updateHeader() {
-    header.classList.toggle('scrolled', window.scrollY > trigger);
-  }
-
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ACTIVE NAV LINK
-// ═══════════════════════════════════════════════════════════════════════════
-
-const page = location.pathname.split('/').pop() || 'index.html';
-
-document.querySelectorAll('.nav-link').forEach(a => {
-  const href = a.getAttribute('href') || '';
-  if (href === page || (page === '' && href === 'index.html')) {
-    a.setAttribute('aria-current', 'page');
-  }
-});
-
-// ═══════════════════════════════════════════════════════════════════════════
 // EXTERNAL LINKS
 // ═══════════════════════════════════════════════════════════════════════════
 
