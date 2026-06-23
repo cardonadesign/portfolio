@@ -57,7 +57,7 @@
         background: rgba(8, 8, 6, 0.97);
         border: 1px solid rgba(255,255,255,0.1);
         border-radius: 14px;
-        font-family: 'DM Sans', system-ui, sans-serif;
+        font-family: 'PP Mori', system-ui, sans-serif;
         font-size: 13px;
         color: #dddbd5;
         z-index: 99999;
@@ -195,7 +195,7 @@
         padding: 9px 16px;
         background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.35);
         border-radius: 8px; font-size: 12px; color: #c084fc;
-        font-family: 'DM Sans', system-ui, sans-serif;
+        font-family: 'PP Mori', system-ui, sans-serif;
         z-index: 100000; opacity: 0; transform: translateY(8px);
         transition: opacity 0.2s, transform 0.2s; pointer-events: none;
       }

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página não encontrada — Marlon Cardona</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--sp-8);
+      gap: var(--sp-6);
+    }
+
+    .error-code {
+      font-size: var(--display);
+      font-weight: var(--semibold);
+      color: var(--text-faint);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .error-title {
+      font-size: var(--heading);
+      font-weight: var(--regular);
+      color: var(--text);
+      line-height: var(--tight);
+    }
+
+    .error-desc {
+      font-size: var(--body);
+      color: var(--text-muted);
+      max-width: 36ch;
+    }
+
+    .error-links {
+      display: flex;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: var(--sp-2);
+    }
+
+    .error-link {
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: var(--sm);
+      color: var(--text);
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .error-link:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .error-link--primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .error-link--primary:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <header class="site-header" role="banner">
+    <a href="index.html" class="site-logo" aria-label="Cardona — Home">Cardona</a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="projetos.html" class="nav-link">Work</a>
+      <a href="sobre.html"    class="nav-link">About</a>
+      <a href="mailto:marlon@marloncardona.com" class="nav-link">Contact</a>
+      <a href="/assets/resume.pdf" class="nav-resume" download aria-label="Download resume">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2.5v10m0 0-3.5-3.5M10 12.5l3.5-3.5M3.75 14.5v.75A1.75 1.75 0 0 0 5.5 17h9a1.75 1.75 0 0 0 1.75-1.75v-.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Resume
+      </a>
+    </nav>
+
+    <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="nav-bar"></span>
+      <span class="nav-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu-nav">
+      <a href="index.html"    class="mobile-nav-link">Home</a>
+      <a href="projetos.html" class="mobile-nav-link">Work</a>
+      <a href="sobre.html"    class="mobile-nav-link">About</a>
+      <a href="mailto:marlon@marloncardona.com" class="mobile-nav-link">Contact</a>
+    </nav>
+    <a href="/assets/resume.pdf" class="mobile-nav-resume" download>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2.5v10m0 0-3.5-3.5M10 12.5l3.5-3.5M3.75 14.5v.75A1.75 1.75 0 0 0 5.5 17h9a1.75 1.75 0 0 0 1.75-1.75v-.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Resume
+    </a>
+  </div>
+
+  <main id="main-content" class="error-page">
+    <p class="error-code" aria-hidden="true">404</p>
+    <h1 class="error-title">Página não encontrada</h1>
+    <p class="error-desc">A página que você procura não existe ou foi removida.</p>
+    <nav class="error-links" aria-label="Navegação de erro">
+      <a href="index.html" class="error-link error-link--primary">← Início</a>
+      <a href="projetos.html" class="error-link">Ver projetos</a>
+      <a href="sobre.html" class="error-link">Sobre</a>
+    </nav>
+  </main>
+
+  <script src="js/navbar.js"></script>
+
+</body>
+</html>
