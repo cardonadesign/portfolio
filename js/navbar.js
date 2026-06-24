@@ -73,8 +73,22 @@
     });
 
     mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href') || '';
+
+        if (href.startsWith('mailto:') || href.startsWith('tel:')) {
+          closeMenu();
+          return;
+        }
+
+        e.preventDefault();
         closeMenu();
+
+        mobileMenu.addEventListener('transitionend', function onEnd(ev) {
+          if (ev.propertyName !== 'transform') return;
+          mobileMenu.removeEventListener('transitionend', onEnd);
+          window.location.href = href;
+        });
       });
     });
 
