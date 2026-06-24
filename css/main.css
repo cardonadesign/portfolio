@@ -644,88 +644,102 @@ input:focus-visible,
    PROJECT GRID (projetos.html — card grid)
 ═══════════════════════════════════════════════════════════════════════════ */
 
+.pg-main {
+  background: #171414;
+  padding-top: 80px;
+}
+
+.pg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 40px 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.pg-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.pg-header-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: var(--regular);
+  line-height: var(--snug);
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 20px;
-  row-gap: 20px;
+  column-gap: 24px;
+  row-gap: 24px;
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: var(--sp-16) clamp(1.5rem, 4vw, 60px) var(--sp-24);
+  padding: 0 24px 80px;
 }
 
 .pg-card {
-  background: var(--surface);
-  border-radius: 20px;
-  border: 1px solid var(--border);
+  background: #2c2c2c;
+  border-radius: 32px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   color: inherit;
   text-decoration: none;
-  transition: border-color 250ms ease;
-  margin-top: 0;
-  margin-bottom: 0;
+  transition: box-shadow 250ms ease;
 }
 
 .pg-card:hover {
-  border-color: var(--text-faint);
+  box-shadow: 0 0 0 1px #575757;
 }
 
 .pg-head {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 20px;
+  padding: 24px 24px 12px;
 }
 
 .pg-text {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 .pg-title {
-  font-family: var(--font-body);
-  font-size: var(--body);
-  font-weight: var(--medium);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
   line-height: var(--snug);
-  letter-spacing: -0.01em;
   color: var(--text);
 }
 
 .pg-sub {
-  font-size: var(--sm);
-  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: var(--body);
+  font-weight: var(--regular);
+  color: #b3b3b3;
   line-height: var(--normal);
 }
 
-.pg-arrow {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-faint);
-  transition: border-color 250ms ease, color 250ms ease;
-}
-
-.pg-card:hover .pg-arrow {
-  border-color: var(--text-faint);
-  color: var(--text);
-}
-
 .pg-media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 20px;
-  background: #1C1C1A;
+  border-radius: 32px;
+  background: #575757;
   position: relative;
-  margin: 0 20px 20px;
+  margin: 0 24px 24px;
+  transition: transform 0.65s var(--ease);
 }
 
 .pg-media img,
@@ -740,7 +754,7 @@ input:focus-visible,
 .pg-placeholder {
   width: 100%;
   height: 100%;
-  background: #1C1C1A;
+  background: #575757;
 }
 
 .pg-card:hover .pg-media img,
@@ -1764,9 +1778,20 @@ input:focus-visible,
     gap: 32px;
   }
 
+  .pg-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pg-header-sub {
+    text-align: left;
+    white-space: normal;
+  }
+
   .project-grid {
     grid-template-columns: 1fr;
-    row-gap: 20px;
+    row-gap: 24px;
   }
 
   .case-block,
