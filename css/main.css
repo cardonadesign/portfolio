@@ -307,12 +307,15 @@ input:focus-visible,
   left: 0;
   width: 100%;
   z-index: 99;
-  background: #2d1616;
-  border-radius: 0 0 32px 32px;
-  padding: 80px 24px 40px;
+  height: 100dvh;
+  background: rgba(20, 13, 13, 0.40);
+  backdrop-filter: blur(48px) saturate(1.4);
+  -webkit-backdrop-filter: blur(48px) saturate(1.4);
+  padding: 80px 24px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 40px;
   transform: translateY(-105%);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1402,16 +1405,17 @@ input:focus-visible,
 
 .ap-header {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
   padding: 24px;
   border-bottom: 1px solid #505050;
 }
 
 .ap-header-title {
-  font-family: var(--font-display);
   font-size: 32px;
   font-weight: var(--medium);
-  color: var(--text);
   line-height: 1.2;
+  color: var(--text);
 }
 
 .ap-content {
@@ -1826,6 +1830,10 @@ input:focus-visible,
     overflow-y: visible;
   }
 
+  .ap-header-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
   .ap-name {
     font-size: 40px;
   }
@@ -1840,7 +1848,7 @@ input:focus-visible,
   }
 
   .ap-tag {
-    font-size: 12px;
+    font-size: 16px;
     padding: 12px 24px;
     line-height: 1.5;
   }
