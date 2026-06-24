@@ -1958,17 +1958,17 @@ input:focus-visible,
 .hp-card {
   background: #2c2c2c;
   border-radius: 32px;
-  border: 1px solid transparent;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: border-color 300ms var(--ease);
+  box-shadow: 0 0 0 1px transparent;
+  transition: box-shadow 300ms var(--ease);
 }
 
 .hp-card:hover {
-  border-color: #575757;
+  box-shadow: 0 0 0 1px #575757;
 }
 
 .hp-card-media-wrap {
