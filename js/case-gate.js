@@ -74,18 +74,18 @@
       gate.setAttribute('aria-labelledby', 'case-gate-title');
 
       gate.innerHTML =
-        '<div class="case-gate-inner">' +
-          '<p class="case-gate-label">Projeto protegido</p>' +
-          '<h2 id="case-gate-title" class="case-gate-title">Digite a senha para acessar este case</h2>' +
+        '<div class="case-gate-card">' +
+          '<p class="case-gate-label">Password-protected</p>' +
+          '<h2 id="case-gate-title" class="case-gate-title">Enter the password to access this case</h2>' +
           '<form class="case-gate-form" id="case-gate-form">' +
             '<label class="case-gate-field">' +
-              '<span class="case-gate-field-label">Senha</span>' +
-              '<input type="password" class="case-gate-input" id="case-gate-password" autocomplete="current-password" required>' +
+              '<span class="case-gate-field-label">Password</span>' +
+              '<input type="password" class="case-gate-input" id="case-gate-password" placeholder="Enter your password" autocomplete="current-password" required>' +
             '</label>' +
-            '<p class="case-gate-error" id="case-gate-error" aria-live="polite" hidden>Senha incorreta. Tente novamente.</p>' +
-            '<button type="submit" class="case-gate-submit">Acessar</button>' +
+            '<p class="case-gate-error" id="case-gate-error" aria-live="polite" hidden>Incorrect password. Please try again.</p>' +
+            '<button type="submit" class="case-gate-submit">View Work</button>' +
+            '<a href="projetos.html" class="case-gate-back">Back to featured works</a>' +
           '</form>' +
-          '<a href="projetos.html" class="case-gate-back">← Voltar aos projetos</a>' +
         '</div>';
 
       document.body.appendChild(gate);
