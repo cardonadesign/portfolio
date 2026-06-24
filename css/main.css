@@ -1971,7 +1971,7 @@ input:focus-visible,
 }
 
 .hp-card-media-wrap {
-  padding: 24px;
+  padding: 12px 24px 24px;
 }
 
 .hp-card-media {
@@ -1991,12 +1991,12 @@ input:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 24px 24px 36px;
+  padding: 24px 24px 12px;
 }
 
 .hp-card-title {
   font-size: 24px;
-  font-weight: var(--medium);
+  font-weight: 600;
   line-height: 1.2;
   color: #ffffff;
   margin: 0;
@@ -2045,11 +2045,11 @@ input:focus-visible,
   }
 
   .hp-card-media-wrap {
-    padding: 16px;
+    padding: 12px 16px 16px;
   }
 
   .hp-card-body {
-    padding: 16px 16px 24px;
+    padding: 16px 16px 12px;
   }
 
   .hp-card-title {
