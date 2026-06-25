@@ -104,6 +104,30 @@
   // Mobile: tap toggle
   // ─────────────────────────────────────────────────────────────
   if (isTouch) {
+    let scrollYOnOpen = 0;
+
+    function removeEscapeListeners() {
+      window.removeEventListener('scroll',  onScroll);
+      window.removeEventListener('resize',  closeMobileCard);
+    }
+
+    function closeMobileCard() {
+      if (!card.classList.contains('is-visible')) return;
+      card.classList.remove('is-visible');
+      card.setAttribute('aria-hidden', 'true');
+      removeEscapeListeners();
+    }
+
+    function onScroll() {
+      if (Math.abs(window.scrollY - scrollYOnOpen) > 80) closeMobileCard();
+    }
+
+    function addEscapeListeners() {
+      window.addEventListener('scroll',  onScroll,        { passive: true });
+      window.addEventListener('resize',  closeMobileCard, { passive: true });
+    }
+
+    // Tap no trigger: abre/fecha + ativa listeners de escape
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       const isOpen = card.classList.toggle('is-visible');
@@ -114,14 +138,26 @@
         card.style.width = mobileW + 'px';
         card.style.left  = Math.max(8, rect.left + rect.width / 2 - mobileW / 2) + 'px';
         card.style.top   = (rect.bottom + 12) + 'px';
+        scrollYOnOpen = window.scrollY;
+        addEscapeListeners();
+      } else {
+        removeEscapeListeners();
       }
     });
 
+    // Toque fora do card e do trigger fecha
     document.addEventListener('touchstart', (e) => {
       if (!trigger.contains(e.target) && !card.contains(e.target)) {
-        card.classList.remove('is-visible');
-        card.setAttribute('aria-hidden', 'true');
+        closeMobileCard();
       }
     }, { passive: true });
+
+    // Hambúrguer abre o menu mobile → fecha o card
+    document.querySelector('.nav-menu-btn')
+      ?.addEventListener('click', closeMobileCard);
+
+    // Links do menu mobile → fecha o card antes de navegar
+    document.querySelectorAll('.mobile-nav-link')
+      .forEach(l => l.addEventListener('click', closeMobileCard));
   }
 })();
