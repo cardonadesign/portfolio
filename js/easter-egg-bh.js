@@ -136,8 +136,7 @@
     }
 
     // Tap no trigger: abre/fecha + ativa listeners de escape
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
+    trigger.addEventListener('click', () => {
       const isOpen = card.classList.toggle('is-visible');
       card.setAttribute('aria-hidden', String(!isOpen));
       if (isOpen) {
