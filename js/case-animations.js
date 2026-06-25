@@ -81,6 +81,20 @@
           : Math.round(obj.val);
         el.textContent = `${prefix}${current}${suffix}`;
       },
+      onComplete() {
+        // Micro-pulse when number lands — the metric deserves emphasis
+        const stat = el.closest('.case-stat');
+        if (stat) {
+          gsap.to(stat, {
+            scale: 1.04,
+            duration: 0.16,
+            ease: 'power2.out',
+            yoyo: true,
+            repeat: 1,
+            onComplete: () => gsap.set(stat, { clearProps: 'scale' }),
+          });
+        }
+      },
     });
   });
 

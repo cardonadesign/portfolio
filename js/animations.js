@@ -94,4 +94,27 @@
       .to('.page-title', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.3');
   }
 
+  // ── Contact footer: stagger reveal (shared across all pages) ─────────────
+  // case-template.js handles this on case pages; animations.js handles it here.
+
+  const contactInner = document.querySelector('.ct-contact-inner');
+  if (contactInner) {
+    const contactParts = document.querySelectorAll('.ct-contact-sub, .ct-contact-headline, .ct-contact-btn, .ct-contact-social');
+    if (contactParts.length) {
+      gsap.set(contactParts, { opacity: 0, y: 24 });
+      gsap.to(contactParts, {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: contactInner,
+          start: 'top 80%',
+          once: true,
+        },
+      });
+    }
+  }
+
 })();

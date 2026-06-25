@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo de Logística Reversa — Marlon Cardona</title>
-  <meta name="description" content="Redesenho de ponta a ponta da logística reversa — integrando processo físico, rastreamento visual e ERP.">
+  <title>Reverse Logistics Module — Marlon Cardona</title>
+  <meta name="description" content="Products were coming back but nobody knew where they were. I redesigned the reverse logistics process end to end — physical and digital — creating a single source of truth.">
   <link rel="canonical" href="https://marloncardona.com/projeto-e.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://marloncardona.com/projeto-e.html">
-  <meta property="og:title" content="Módulo de Logística Reversa — Marlon Cardona">
-  <meta property="og:description" content="Redesenho de ponta a ponta da logística reversa — integrando processo físico, rastreamento visual e ERP.">
+  <meta property="og:title" content="Reverse Logistics Module — Marlon Cardona">
+  <meta property="og:description" content="Products were coming back but nobody knew where they were. I redesigned the reverse logistics process end to end — physical and digital — creating a single source of truth.">
   <meta property="og:image" content="https://marloncardona.com/assets/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Módulo de Logística Reversa — Marlon Cardona">
-  <meta name="twitter:description" content="Redesenho de ponta a ponta da logística reversa — integrando processo físico, rastreamento visual e ERP.">
+  <meta name="twitter:title" content="Reverse Logistics Module — Marlon Cardona">
+  <meta name="twitter:description" content="Products were coming back but nobody knew where they were. I redesigned the reverse logistics process end to end — physical and digital — creating a single source of truth.">
   <meta name="twitter:image" content="https://marloncardona.com/assets/og-image.jpg">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/manifest.json">
@@ -41,7 +41,6 @@
       <a href="index.html"    class="nav-link">Home</a>
       <a href="projetos.html" class="nav-link">Work</a>
       <a href="sobre.html"    class="nav-link">About</a>
-      <a href="mailto:marlon@marloncardona.com" class="nav-link">Contact</a>
       <a href="/assets/resume.pdf" class="nav-resume" download aria-label="Download resume">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 2.5v10m0 0-3.5-3.5M10 12.5l3.5-3.5M3.75 14.5v.75A1.75 1.75 0 0 0 5.5 17h9a1.75 1.75 0 0 0 1.75-1.75v-.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,7 +60,6 @@
       <a href="index.html"    class="mobile-nav-link">Home</a>
       <a href="projetos.html" class="mobile-nav-link">Work</a>
       <a href="sobre.html"    class="mobile-nav-link">About</a>
-      <a href="mailto:marlon@marloncardona.com" class="mobile-nav-link">Contact</a>
     </nav>
     <a href="/assets/resume.pdf" class="mobile-nav-resume" download>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -71,150 +69,163 @@
     </a>
   </div>
 
-  <main id="main-content" class="case-page">
+  <main id="main-content" class="ct-page">
 
-    <section class="case-intro">
-      <div class="case-wrap">
-        <a href="projetos.html" class="case-back">← Projetos</a>
-        <div class="case-intro-grid case-intro-grid--solo">
-          <header class="case-intro-copy">
-            <p class="case-tag">Produto Interno · Mini-case</p>
-            <h1 class="case-title">Módulo de Logística Reversa</h1>
-            <p class="case-deck">Baixa confiabilidade nos dados de rastreamento da logística reversa de produtos eletrônicos — processo sustentado por planilhas paralelas e informações dispersas.</p>
-          </header>
+    <section class="ct-hero" aria-label="Project cover">
+      <div class="ct-hero-img"
+           role="img"
+           aria-label="Reverse Logistics Module — hero image">
+        <img src="assets/cases/projeto-e-hero.jpg" alt="" aria-hidden="true" loading="eager">
+        <div class="ct-hero-overlay" aria-hidden="true"></div>
+        <div class="ct-hero-meta">
+          <p class="ct-hero-company">Consumer Electronics</p>
+          <h1 class="ct-hero-title">Reverse Logistics Module</h1>
+          <p class="ct-hero-product">Asset Tracking System</p>
         </div>
       </div>
     </section>
 
-    <figure class="case-bleed case-reveal-media">
-      <div class="case-bleed-inner">
-        <div class="case-image-placeholder" role="img" aria-label="Espaço para sistema de rastreamento">Imagem — Sistema visual de rastreamento de ativos</div>
-      </div>
-      <figcaption class="case-bleed-caption case-wrap">
-        <span class="case-bleed-tag">Visão geral</span>
-        <span>Sistema visual de rastreamento de ativos</span>
-      </figcaption>
-    </figure>
+    <div class="ct-body">
 
-    <section class="case-section">
-      <div class="case-wrap">
-        <div class="case-row case-reveal-row">
-          <h2 class="case-row-label">Problema</h2>
-          <div class="case-row-body">
-            <ul>
-              <li>Falta de uma fonte única da verdade</li>
-              <li>Rastreamento visual limitado</li>
-              <li>Baixa ergonomia no centro de distribuição</li>
-              <li>Sistema digital desatualizado em relação aos processos físicos</li>
-              <li>Risco de perda de dados e informações sensíveis</li>
-            </ul>
-            <p>O problema não era apenas digital — era processual, físico e sistêmico.</p>
+      <aside class="ct-intro" aria-label="Project introduction">
+        <div class="ct-intro-breadcrumb">
+          <span>Consumer Electronics</span>
+          <span class="ct-intro-sep" aria-hidden="true">/</span>
+          <span>Asset Tracking System</span>
+        </div>
+        <p class="ct-intro-title">Reverse Logistics Module</p>
+        <div class="ct-intro-text">
+          <p>Products were coming back, but nobody really knew where they were. Tracking data was unreliable, spread across spreadsheets, and out of sync with what was actually happening on the warehouse floor.</p>
+          <p>I redesigned the logistics process end to end — including what happened physically in the distribution center, not just in the system.</p>
+        </div>
+      </aside>
+
+      <div class="ct-main">
+
+        <div class="ct-section">
+          <p class="ct-section-label">The problem</p>
+          <div class="ct-section-body">
+            <p>The reverse logistics process ran across multiple teams — logistics, customer service, and finance — each operating with their own version of the data. There was no single source of truth. Tracking was unreliable, visibility was low, and sensitive information was exposed to unnecessary risk.</p>
+            <p>The digital system lagged behind the physical process. What happened in the warehouse wasn't reflected in the tools, which meant teams were making decisions on incomplete data. The operational risk and the data security risk were both significant.</p>
           </div>
         </div>
-        <div class="case-row case-reveal-row">
-          <h2 class="case-row-label">Minha atuação</h2>
-          <div class="case-row-body">
-            <p>Atuei como Product Designer com foco em processos e sistemas, trabalhando com logística, Customer Service, tecnologia e operações. Redesenhei o processo de ponta a ponta, integrando o mundo físico ao digital.</p>
+
+        <div class="ct-img-row">
+          <div class="ct-img ct-img--single" role="img" aria-label="Reverse logistics process map — fragmented data and tracking gaps"></div>
+        </div>
+
+        <div class="ct-img-row">
+          <div class="ct-img ct-img--single" role="img" aria-label="Warehouse flow redesign — physical and digital integration"></div>
+        </div>
+
+        <div class="ct-section">
+          <p class="ct-section-label">Approach</p>
+          <div class="ct-section-body">
+            <p>I started at the distribution center. Understanding how assets actually moved through the physical space was essential before designing anything digital. The ergonomics were poor, the workflow was disorganized, and the space wasn't set up to support accurate tracking.</p>
+            <p>I redesigned the physical process alongside the digital one — specific areas for asset verification, a new asset labeling model, and an automatic label generator built directly into the system. Every physical step got a digital counterpart.</p>
+            <p>I connected the entire process to the company's ERP, making asset intake formal and auditable. I also built a module for recording the opening of returned packages — stored securely in the cloud — which closed the gap between what happened physically and what was recorded in the system.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <figure class="case-bleed case-reveal-media">
-      <div class="case-bleed-inner">
-        <div class="case-image-placeholder" role="img" aria-label="Espaço para processo físico-operacional">Imagem — Reestruturação do processo no centro de distribuição</div>
-      </div>
-      <figcaption class="case-bleed-caption case-wrap">
-        <span class="case-bleed-tag">Operação</span>
-        <span>Redesenho do processo físico-operacional e ergonomia operacional</span>
-      </figcaption>
-    </figure>
-
-    <section class="case-section">
-      <div class="case-wrap">
-        <div class="case-row case-reveal-row">
-          <h2 class="case-row-label">Decisões</h2>
-          <div class="case-row-body">
-            <ul>
-              <li>Reestruturação do processo de verificação dos ativos e criação de espaços específicos no centro de distribuição</li>
-              <li>Criação de um modelo visual único para rastreamento dos ativos, centralizando informações em um único sistema</li>
-              <li>Integração do processo de entrada dos ativos com o ERP da empresa, novo modelo de etiquetas e gerador automático de etiquetas</li>
-              <li>Módulo para gravação da abertura dos pacotes devolvidos, com armazenamento seguro dos registros em nuvem</li>
-            </ul>
-          </div>
+        <div class="ct-img-row">
+          <div class="ct-img ct-img--single" role="img" aria-label="Asset tracking system — main interface and ERP integration"></div>
         </div>
-      </div>
-    </section>
 
-    <figure class="case-bleed case-reveal-media">
-      <div class="case-bleed-inner">
-        <div class="case-image-placeholder" role="img" aria-label="Espaço para etiquetas e ERP">Imagem — Etiquetas de ativos e integração com ERP</div>
-      </div>
-      <figcaption class="case-bleed-caption case-wrap">
-        <span class="case-bleed-tag">Na prática</span>
-        <span>Gerador automático de etiquetas e vinculação à formalização de entrega</span>
-      </figcaption>
-    </figure>
-
-    <section class="case-impact">
-      <div class="case-wrap">
-        <div class="case-row case-reveal-row">
-          <h2 class="case-row-label">Impacto</h2>
-          <div class="case-row-body">
-            <ul>
-              <li>Redução do tempo de análise de ativos</li>
-              <li>Aumento da confiabilidade dos dados de rastreamento</li>
-              <li>Maior eficiência operacional</li>
-              <li>Melhor experiência para clientes e times internos</li>
-              <li>Processo único, integrado e auditável</li>
-            </ul>
-          </div>
+        <div class="ct-img-row ct-img-row--dual">
+          <div class="ct-img ct-img--portrait" role="img" aria-label="Label generator — automatic asset labeling tool"></div>
+          <div class="ct-img ct-img--portrait" role="img" aria-label="Package recording module — cloud-stored return documentation"></div>
         </div>
-      </div>
-    </section>
 
-    <section class="case-more" aria-labelledby="more-heading-e">
-      <div class="case-wrap">
-        <h2 id="more-heading-e" class="case-more-label">Outros projetos</h2>
-        <div class="case-more-grid">
-          <a href="projeto-a.html" class="case-more-card">
-            <span class="case-more-tag">B2C · Case principal</span>
-            <span class="case-more-title">Reconstrução de E-commerce de Assinatura</span>
-          </a>
-          <a href="projeto-d.html" class="case-more-card">
-            <span class="case-more-tag">Produto Interno · Case principal</span>
-            <span class="case-more-title">Módulo Financeiro de Pagamento de Rendimentos</span>
-          </a>
-          <a href="projeto-c.html" class="case-more-card">
-            <span class="case-more-tag">B2C · Case principal</span>
-            <span class="case-more-title">Aplicativo de Investimentos</span>
-          </a>
-          <a href="projeto-b.html" class="case-more-card">
-            <span class="case-more-tag">Produto Interno · Mini-case</span>
-            <span class="case-more-title">Módulo de Gestão de Risco e Crédito</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <span class="footer-copy">marloncardona.com</span>
-      <div class="footer-links">
-        <a href="mailto:marlon@marloncardona.com">Email</a>
-        <a href="https://linkedin.com/in/marloncardona">LinkedIn</a>
       </div>
     </div>
-  </footer>
+
+    <div class="ct-gallery">
+
+      <p class="ct-gallery-head">Asset tracking</p>
+      <div class="ct-img-row">
+        <div class="ct-img ct-img--single" role="img" aria-label="Gallery — asset tracking system overview"></div>
+      </div>
+
+      <p class="ct-gallery-head">Label system</p>
+      <div class="ct-img-row ct-img-row--triple">
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — label system detail 1"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — label system detail 2"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — label system detail 3"></div>
+      </div>
+
+      <p class="ct-gallery-head">Process flow</p>
+      <div class="ct-img-row ct-img-row--dual">
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — process flow detail 1"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — process flow detail 2"></div>
+      </div>
+
+      <div class="ct-outcome">
+        <div class="ct-section">
+          <p class="ct-section-label">Outcome</p>
+          <div class="ct-section-body">
+            <p>Asset analysis time dropped. Tracking data became reliable. Teams that used to work with fragmented information now shared a single, auditable record.</p>
+            <p>Customer service improved because agents had accurate, up-to-date data. Finance could reconcile assets without chasing spreadsheets.</p>
+            <p>This project expanded what I understand design to be. Redesigning a physical process, learning ERP integration, thinking about how people move through a warehouse — those weren't skills I expected to develop. But solving the real problem required all of them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-next">
+        <div class="ct-next-card">
+          <div class="ct-next-header">
+            <p class="ct-next-title">Risk and Credit Management Module</p>
+            <a href="projeto-b.html" class="ct-next-btn">
+              Next Project
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-contact">
+        <div class="ct-contact-inner">
+          <p class="ct-contact-sub">Let's talk about what you're building.</p>
+          <div class="ct-contact-cta">
+            <p class="ct-contact-headline">Get in touch.</p>
+            <a href="mailto:marlon@marloncardona.com" class="ct-contact-btn">Contact me</a>
+          </div>
+          <div class="ct-contact-social">
+            <a href="https://linkedin.com/in/marlon-cardona/" class="ct-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/553191922159" class="ct-social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+              </svg>
+            </a>
+            <a href="mailto:marlon@marloncardona.com" class="ct-social-link" aria-label="Email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="ct-copyright">
+          <span>2026</span>
+          <span>Cardona</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
 
   <script src="js/clarity.bundle.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/motion-config.js"></script>
   <script src="js/main.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/case-animations.js"></script>
+  <script src="js/case-template.js"></script>
 
 </body>
 </html>

@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revenue Payment Module — Marlon Cardona</title>
-  <meta name="description" content="Investors weren't getting paid on time. I redesigned the full payment process and supported a payment API integration — 95% faster processing, 98% error-free.">
-  <link rel="canonical" href="https://marloncardona.com/projeto-d.html">
+  <title>[Título do Projeto] — Marlon Cardona</title>
+  <meta name="description" content="[Descrição curta do case]">
+  <link rel="canonical" href="https://marloncardona.com/case-template.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://marloncardona.com/projeto-d.html">
-  <meta property="og:title" content="Revenue Payment Module — Marlon Cardona">
-  <meta property="og:description" content="Investors weren't getting paid on time. I redesigned the full payment process and supported a payment API integration — 95% faster processing, 98% error-free.">
+  <meta property="og:url" content="https://marloncardona.com/case-template.html">
+  <meta property="og:title" content="[Título do Projeto] — Marlon Cardona">
+  <meta property="og:description" content="[Descrição curta do case]">
   <meta property="og:image" content="https://marloncardona.com/assets/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Revenue Payment Module — Marlon Cardona">
-  <meta name="twitter:description" content="Investors weren't getting paid on time. I redesigned the full payment process and supported a payment API integration — 95% faster processing, 98% error-free.">
+  <meta name="twitter:title" content="[Título do Projeto] — Marlon Cardona">
+  <meta name="twitter:description" content="[Descrição curta do case]">
   <meta name="twitter:image" content="https://marloncardona.com/assets/og-image.jpg">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://www.clarity.ms">
 
+  <!-- Password gate — configure data-project-id e adicione o projeto em config/project-access.js -->
   <script src="config/project-access.js"></script>
   <script src="js/case-gate.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body data-project-id="projeto-d">
+<body data-project-id="case-template">
 
   <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
@@ -71,110 +72,134 @@
 
   <main id="main-content" class="ct-page">
 
-    <section class="ct-hero" aria-label="Project cover">
+    <!-- ═══════════════════════════════════════════════════════════════════
+       HERO — imagem representativa com gradiente + textos sobrepostos
+       Adicione a imagem via: style="background-image: url('assets/...')"
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="ct-hero" aria-label="Capa do projeto">
       <div class="ct-hero-img"
            role="img"
-           aria-label="Revenue Payment Module — hero image">
-        <img src="assets/cases/projeto-d-hero.jpg" alt="" aria-hidden="true" loading="eager">
+           aria-label="Imagem representativa do case">
         <div class="ct-hero-overlay" aria-hidden="true"></div>
         <div class="ct-hero-meta">
-          <p class="ct-hero-company">Investment Platform</p>
-          <h1 class="ct-hero-title">Revenue Payment Module</h1>
-          <p class="ct-hero-product">Financial Operations</p>
+          <p class="ct-hero-company">Name of the Company</p>
+          <h1 class="ct-hero-title">This is the title of the project</h1>
+          <p class="ct-hero-product">Name of the product</p>
         </div>
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+       CONTENT BODY — fundo escuro com sidebar sticky (desktop)
+    ═══════════════════════════════════════════════════════════════════ -->
     <div class="ct-body">
 
-      <aside class="ct-intro" aria-label="Project introduction">
+      <!-- LEFT: coluna intro — fica sticky enquanto o scroll passa pelo ct-body -->
+      <aside class="ct-intro" aria-label="Introdução ao projeto">
         <div class="ct-intro-breadcrumb">
-          <span>Investment Platform</span>
+          <span>Name of the Company</span>
           <span class="ct-intro-sep" aria-hidden="true">/</span>
-          <span>Financial Operations</span>
+          <span>Name of the product</span>
         </div>
-        <p class="ct-intro-title">Revenue Payment Module</p>
+        <p class="ct-intro-title">This is the title of the project</p>
         <div class="ct-intro-text">
-          <p>Investors weren't getting paid on time. Transfers were failing, reconciliation was manual, and as the investor base grew, the cracks in the payment system became impossible to ignore.</p>
-          <p>I redesigned the full payment process — from diagnosing operational gaps to supporting the integration of a payment API that automated most of the flow.</p>
+          <p>Felis, eu nec nisl. Vehicula, convallis vel at id scelerisque nullam tortor. Praesent eu enim viverra dui placerat tortor. Tincidunt facilisis placerat urna ex, facilisis adipiscing vitae ut non ipsum nullam elit.</p>
+          <p>Efficitur nullam lorem volutpat ex. Vestibulum enim quam sollicitudin elementum ex fringilla commodo felis, at sollicitudin eget in praesent nisl lorem. Tempor vitae lacus non eget nam lacus, turpis nam tincidunt felis, massa odio.</p>
         </div>
       </aside>
 
+      <!-- RIGHT: coluna de conteúdo — scrollável -->
       <div class="ct-main">
 
+        <!-- The problem -->
         <div class="ct-section">
           <p class="ct-section-label">The problem</p>
           <div class="ct-section-body">
-            <p>Payments to investors went out directly from the company's account, with no standardization and very little automation. When something went wrong — and things went wrong often — the finance team fixed it by hand.</p>
-            <p>As the investor base scaled, those manual fixes became unsustainable. A meaningful portion of payments weren't completing. Reconciliation was slow. The financial risk was growing every month, with no reliable way to get ahead of it.</p>
+            <p>Praesent vitae vitae malesuada nam luctus urna. Faucibus nibh viverra sodales elit sapien vitae elementum nunc odio laoreet nec morbi hendrerit sodales. Quam placerat nec facilisis donec porta risus ullamcorper tincidunt lobortis, ipsum elit venenatis eget tincidunt urna.</p>
+            <p>In ex nulla, tincidunt nec non sed tincidunt gravida vehicula, sit quam dolor vel lacus, urna. Ac vestibulum efficitur viverra lacus urna ut libero, non felis, vitae dui. Praesent nec varius ultrices at felis, risus gravida elit sapien.</p>
           </div>
         </div>
 
+        <!-- Imagem de detalhe — single (16:9) -->
+        <!-- Para adicionar imagem: <img src="assets/..." alt="..." class="ct-img-media"> dentro da div abaixo -->
         <div class="ct-img-row">
-          <div class="ct-img ct-img--single" role="img" aria-label="Payment process map — failures and manual dependencies"></div>
+          <div class="ct-img ct-img--single" role="img" aria-label="Detalhe do problema — visão geral"></div>
         </div>
 
+        <!-- Imagem de detalhe — single (16:9) -->
         <div class="ct-img-row">
-          <div class="ct-img ct-img--single" role="img" aria-label="Operational gaps and automation opportunities identified"></div>
+          <div class="ct-img ct-img--single" role="img" aria-label="Detalhe do problema — fluxo"></div>
         </div>
 
+        <!-- Approach -->
         <div class="ct-section">
           <p class="ct-section-label">Approach</p>
           <div class="ct-section-body">
-            <p>I started with the operational process, not the interface. I mapped every step of how payments were actually being made — where decisions happened, where errors occurred, and where manual work was covering for systemic failures.</p>
-            <p>The diagnosis shaped the strategy. Some problems could be fixed with better process design. Others needed a technology solution. I helped evaluate a new banking partner, then worked closely with engineering through the payment API integration.</p>
-            <p>With the infrastructure in place, I designed the new payment module — focused on reliability, control, and operational visibility. The interface gave the finance team a level of clarity and confidence they hadn't had before.</p>
+            <p>Gravida sit elit eu odio dui nibh odio nec donec lacus non ex laoreet malesuada eget nunc eu sodales. Eget tincidunt nunc sed lobortis, at eget elementum vitae non. Dignissim, praesent faucibus diam placerat nullam id scelerisque elit vel commodo libero.</p>
+            <p>Ex venenatis malesuada cras ex viverra non praesent vel tincidunt facilisis sit urna lobortis, eget sit scelerisque non ac amet, nisi nisi varius sed leo. Nam urna sodales felis, faucibus tincidunt faucibus amet, porta ullamcorper tempor.</p>
+            <p>Massa non, non elit ultrices varius sed eget lacus, nam felis, vel vel facilisis laoreet odio sapien vel urna quis porta scelerisque sit quis lorem nunc tincidunt ex maximus nisi cursus elit placerat tincidunt.</p>
           </div>
         </div>
 
+        <!-- Imagem de detalhe — single (16:9) -->
         <div class="ct-img-row">
-          <div class="ct-img ct-img--single" role="img" aria-label="Payment module — main interface overview"></div>
+          <div class="ct-img ct-img--single" role="img" aria-label="Detalhe da abordagem"></div>
         </div>
 
+        <!-- Imagens de detalhe — dual (2 colunas, portrait) -->
         <div class="ct-img-row ct-img-row--dual">
-          <div class="ct-img ct-img--portrait" role="img" aria-label="Payment flow — transaction detail view"></div>
-          <div class="ct-img ct-img--portrait" role="img" aria-label="Reconciliation flow — status and control panel"></div>
+          <div class="ct-img ct-img--portrait" role="img" aria-label="Componente — detalhe 1"></div>
+          <div class="ct-img ct-img--portrait" role="img" aria-label="Componente — detalhe 2"></div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /.ct-main -->
+    </div><!-- /.ct-body -->
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+       GALLERY — fundo branco com imagens, outcome, CTA e contato
+    ═══════════════════════════════════════════════════════════════════ -->
     <div class="ct-gallery">
 
-      <p class="ct-gallery-head">Payment architecture</p>
+      <!-- Grupo de imagens 1: single -->
+      <p class="ct-gallery-head">Gallery Section Title</p>
       <div class="ct-img-row">
-        <div class="ct-img ct-img--single" role="img" aria-label="Gallery — payment architecture overview"></div>
+        <div class="ct-img ct-img--single" role="img" aria-label="Galeria — visão geral"></div>
       </div>
 
-      <p class="ct-gallery-head">Financial module</p>
+      <!-- Grupo de imagens 2: triple (3 colunas desktop / 1 coluna mobile) -->
+      <p class="ct-gallery-head">Gallery Section Title</p>
       <div class="ct-img-row ct-img-row--triple">
-        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — module screen detail 1"></div>
-        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — module screen detail 2"></div>
-        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — module screen detail 3"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Galeria — detalhe 1"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Galeria — detalhe 2"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Galeria — detalhe 3"></div>
       </div>
 
-      <p class="ct-gallery-head">Reconciliation flow</p>
+      <!-- Grupo de imagens 3: dual (2 colunas desktop + mobile) -->
+      <p class="ct-gallery-head">Gallery Section Title</p>
       <div class="ct-img-row ct-img-row--dual">
-        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — reconciliation detail 1"></div>
-        <div class="ct-img ct-img--portrait" role="img" aria-label="Gallery — reconciliation detail 2"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Galeria — detalhe 4"></div>
+        <div class="ct-img ct-img--portrait" role="img" aria-label="Galeria — detalhe 5"></div>
       </div>
 
+      <!-- Outcome -->
       <div class="ct-outcome">
         <div class="ct-section">
           <p class="ct-section-label">Outcome</p>
           <div class="ct-section-body">
-            <p>Payment processing time dropped by 95%. 98% of transactions went through without errors. CSAT reached 85%, with a CEST of 5.10 — measured in the first six months after launch.</p>
-            <p>Manual processes were nearly eliminated. The finance team went from constantly firefighting to operating with predictability.</p>
-            <p>This project changed how I think about product design. The real work wasn't in the screens — it was in understanding a broken operational system well enough to help rebuild it. That's when I started thinking of myself as something between a designer and a product manager.</p>
+            <p>Gravida sit elit eu odio dui nibh odio nec donec lacus non ex laoreet malesuada eget nunc eu sodales. Eget tincidunt nunc sed lobortis, at eget elementum vitae non dignissim, praesent faucibus diam placerat.</p>
+            <p>Ex venenatis malesuada cras ex viverra non praesent vel tincidunt facilisis sit urna lobortis, eget sit scelerisque non ac amet, nisi nisi varius sed leo. Nam urna sodales felis, faucibus tincidunt faucibus amet, porta ullamcorper tempor.</p>
+            <p>Massa non, non elit ultrices varius sed eget lacus, nam felis, vel vel facilisis laoreet odio sapien vel urna quis porta scelerisque sit quis lorem nunc tincidunt ex maximus.</p>
           </div>
         </div>
       </div>
 
+      <!-- CTA: próximo projeto -->
+      <!-- Altere href e o título para o próximo case -->
       <div class="ct-next">
         <div class="ct-next-card">
           <div class="ct-next-header">
-            <p class="ct-next-title">Building an Investment App</p>
-            <a href="projeto-c.html" class="ct-next-btn">
+            <p class="ct-next-title">This is a title of the next project</p>
+            <a href="projetos.html" class="ct-next-btn">
               Next Project
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -184,6 +209,7 @@
         </div>
       </div>
 
+      <!-- Contato / Footer -->
       <div class="ct-contact">
         <div class="ct-contact-inner">
           <p class="ct-contact-sub">Let's talk about what you're building.</p>
@@ -215,14 +241,13 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /.ct-gallery -->
 
   </main>
 
   <script src="js/clarity.bundle.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/motion-config.js"></script>
   <script src="js/main.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/case-template.js"></script>
