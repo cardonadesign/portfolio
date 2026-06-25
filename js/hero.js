@@ -10,34 +10,26 @@
   // ── Default config ───────────────────────────────────────────────────────
 
   const DEFAULTS = {
-    color1:     [0.75, 0.05, 0.05],
-    color2:     [0.35, 0.28, 0.18],
-    colorBg:    [0.031, 0.031, 0.024],
-    spread:      1.10,
-    speed:       0.18,
-    mouseStr:    0.80,
-    grain:       0.42,
+    color1:     [0.788, 0.231, 0.184],
+    color2:     [0.090, 0.078, 0.078],
+    colorBg:    [0.090, 0.078, 0.078],
+    spread:      1.60,
+    speed:       0.0,
+    mouseStr:    0.28,
+    grain:       0.55,
     stripeFreq:  0,
     stripeAmt:   0,
   };
 
-  function loadConfig() {
-    try {
-      const s = localStorage.getItem('mc-glass');
-      return s ? Object.assign({}, DEFAULTS, JSON.parse(s)) : Object.assign({}, DEFAULTS);
-    } catch (_) { return Object.assign({}, DEFAULTS); }
-  }
-
-  function saveConfig(cfg) {
-    try { localStorage.setItem('mc-glass', JSON.stringify(cfg)); } catch (_) {}
-  }
+  function loadConfig()  { return Object.assign({}, DEFAULTS); }
+  function saveConfig()  {}
 
   const cfg = loadConfig();
 
   // ── Three.js setup ───────────────────────────────────────────────────────
 
-  let W = canvas.parentElement.offsetWidth;
-  let H = canvas.parentElement.offsetHeight;
+  let W = canvas.parentElement.offsetWidth  || window.innerWidth;
+  let H = canvas.parentElement.offsetHeight || window.innerHeight;
 
   let renderer;
   try {
@@ -64,6 +56,7 @@
     u_spread:     { value: cfg.spread },
     u_speed:      { value: cfg.speed },
     u_mouseStr:   { value: cfg.mouseStr },
+    u_mouseVel:   { value: 0.0 },
     u_grain:      { value: cfg.grain },
     u_stripeFreq: { value: cfg.stripeFreq },
     u_stripeAmt:  { value: cfg.stripeAmt },
@@ -90,6 +83,7 @@
       uniform float u_spread;
       uniform float u_speed;
       uniform float u_mouseStr;
+      uniform float u_mouseVel;
       uniform float u_grain;
       uniform float u_stripeFreq;
       uniform float u_stripeAmt;
@@ -140,15 +134,15 @@
 
         float o1 = orb(uvAR, p1AR, r * 1.3);
         float o2 = orb(uvAR, p2AR, r * 1.1);
-        float om = orb(uvAR, pmAR, r * 0.95) * u_mouseStr;
+        float om = orb(uvAR, pmAR, r * 0.95) * u_mouseStr * u_mouseVel;
 
-        // Blend orb colors over base
+        // Blend orb colors over base — all driven by mouse velocity
         vec3 col = u_colorBg;
-        col = mix(col, u_color1, clamp(o1,       0.0, 1.0));
-        col = mix(col, u_color2, clamp(o2 * 0.9, 0.0, 1.0));
+        col = mix(col, u_color1, clamp(o1 * u_mouseVel * 0.35, 0.0, 1.0));
+        col = mix(col, u_color2, clamp(o2 * 0.9 * u_mouseVel, 0.0, 1.0));
 
-        // Mouse orb blends between both colors (hot spot)
-        vec3 hotspot = mix(u_color1, u_color2, 0.5) * 1.25;
+        // Mouse hotspot — focused cursor glow
+        vec3 hotspot = u_color1 * 1.1;
         col = mix(col, hotspot, clamp(om, 0.0, 1.0));
 
         // ── Ribbed glass effect ──────────────────────────────────────────
@@ -245,6 +239,9 @@
   const clock = new THREE.Clock();
   let frameId = null;
 
+  let prevMouse = { x: 0.5, y: 0.5 };
+  let mouseVel  = 0.0;
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     renderer.render(scene, camera);
     return;
@@ -259,6 +256,15 @@
     currentMouse.x += (targetMouse.x - currentMouse.x) * 0.05;
     currentMouse.y += (targetMouse.y - currentMouse.y) * 0.05;
     uniforms.u_mouse.value.set(currentMouse.x, currentMouse.y);
+
+    // Mouse velocity → drives glow intensity
+    const dx = currentMouse.x - prevMouse.x;
+    const dy = currentMouse.y - prevMouse.y;
+    const spd = Math.sqrt(dx * dx + dy * dy);
+    mouseVel += (Math.min(spd * 80, 1.0) - mouseVel) * 0.08;
+    uniforms.u_mouseVel.value = mouseVel;
+    prevMouse.x = currentMouse.x;
+    prevMouse.y = currentMouse.y;
 
     renderer.render(scene, camera);
   }
