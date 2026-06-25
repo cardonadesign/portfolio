@@ -33,7 +33,7 @@
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true });
   } catch (e) { canvas.style.display = 'none'; return; }
 
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
