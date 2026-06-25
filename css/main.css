@@ -127,7 +127,7 @@ input:focus-visible,
 .cursor-dot {
   width: 6px;
   height: 6px;
-  background: var(--text);
+  background: #ff0000;
   margin-top: -3px;
   margin-left: -3px;
   transition: opacity var(--transition);
@@ -1273,7 +1273,7 @@ input:focus-visible,
   display: block;
   width: 100%;
   height: 100%;
-  background: var(--text-faint);
+  background: #ff0000;
   transform: scaleX(0);
   transform-origin: left center;
 }
@@ -1566,49 +1566,6 @@ input:focus-visible,
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════════════════════ */
-
-.site-footer {
-  padding: var(--sp-8) clamp(1.5rem, 4vw, 60px);
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-6);
-  flex-wrap: wrap;
-}
-
-.footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-6);
-  flex-wrap: wrap;
-}
-
-.footer-copy {
-  font-size: var(--xs);
-  color: var(--text-faint);
-}
-
-.footer-links {
-  display: flex;
-  gap: var(--sp-6);
-}
-
-.footer-links a {
-  font-size: var(--xs);
-  color: var(--text-faint);
-  transition: color var(--transition);
-}
-
-.footer-links a:hover { color: var(--text) }
-
-/* ═══════════════════════════════════════════════════════════════════════════
    UTILITY
 ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -1641,6 +1598,12 @@ input:focus-visible,
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+
+#hero-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .page-home {
@@ -1703,6 +1666,79 @@ input:focus-visible,
 .home-location-link:hover {
   color: #F0EFE9;
   text-decoration-color: rgba(240, 239, 233, 0.65);
+}
+
+/* ─── Easter Egg: BH Card ──────────────────────────────────────────────── */
+
+.bh-trigger-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.bh-card {
+  position: fixed;
+  width: 220px;
+  background: #2c2c2c;
+  border-radius: 16px;
+  padding: 12px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 20px 38px 25px rgba(2, 2, 2, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  transform-style: preserve-3d;
+  z-index: 9999;
+  will-change: transform, opacity;
+}
+
+.bh-card__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bh-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.bh-card__caption {
+  padding: 0 4px;
+}
+
+.bh-card__caption p {
+  font-family: 'PP Mori', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+@media (hover: none) {
+  .home-location-link {
+    animation: bh-pulse-underline 2.5s ease-in-out infinite;
+  }
+
+  @keyframes bh-pulse-underline {
+    0%, 100% { text-decoration-color: rgba(240, 239, 233, 0.25); }
+    50%       { text-decoration-color: rgba(240, 239, 233, 0.65); }
+  }
+
+  .bh-card {
+    transition: opacity 0.3s ease;
+  }
+
+  .bh-card.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* ─── Footer bar ───────────────────────────────────────────────────────── */
@@ -2009,6 +2045,13 @@ input:focus-visible,
   transition: transform 0.65s var(--ease);
 }
 
+.hp-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .hp-card:hover .hp-card-media {
   transform: scale(1.03);
 }
@@ -2108,7 +2151,6 @@ html:not(.case-gate-ready) body[data-project-id] {
 }
 
 body.is-gated .case-page,
-body.is-gated .site-footer,
 body.is-gated .case-progress {
   visibility: hidden;
 }
@@ -2233,4 +2275,640 @@ body.is-gated .case-progress {
 
 .case-gate-back:hover {
   opacity: 0.75;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CASE TEMPLATE (.ct-*) — novo layout de case study
+   Desktop: sidebar sticky à esquerda + conteúdo scrollável à direita
+   Mobile:  tudo empilhado verticalmente
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Page container ────────────────────────────────────────────────────── */
+
+.ct-page {
+  padding-top: 80px; /* navbar height */
+  background: var(--bg);
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+
+.ct-hero {
+  padding: 24px;
+}
+
+.ct-hero-img {
+  position: relative;
+  aspect-ratio: 1920 / 1000;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ct-hero-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.ct-hero-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.80) 0%,
+    rgba(11, 11, 11, 0.65) 18%,
+    rgba(23, 23, 23, 0.45) 36%,
+    rgba(62, 62, 62, 0.22) 55%,
+    transparent 76%
+  );
+  pointer-events: none;
+}
+
+.ct-hero-meta {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.ct-hero-company {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #b3b3b3;
+}
+
+.ct-hero-title {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1.28px;
+  color: #ffffff;
+}
+
+.ct-hero-product {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #b3b3b3;
+}
+
+/* ─── Content body: 2 colunas no desktop ────────────────────────────────── */
+
+.ct-body {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+}
+
+/* Sidebar esquerda — fica sticky enquanto o .ct-body estiver visível */
+.ct-intro {
+  width: 632px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ct-intro-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #b3b3b3;
+  white-space: nowrap;
+}
+
+.ct-intro-sep {
+  color: #c32e2e;
+}
+
+.ct-intro-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+}
+
+.ct-intro-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #b3b3b3;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Coluna direita — scrollável */
+.ct-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Blocos de texto (problema, approach, outcome) ──────────────────────── */
+
+.ct-section {
+  display: flex;
+  gap: 24px;
+  padding: 48px 24px;
+  font-size: 16px;
+}
+
+.ct-section-label {
+  width: 134px;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.ct-section-body {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.16px;
+  color: #b3b3b3;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* ─── Imagens ─────────────────────────────────────────────────────────────── */
+
+.ct-img-row {
+  padding: 12px 24px;
+}
+
+.ct-img-row--dual,
+.ct-img-row--triple {
+  display: flex;
+  gap: 24px;
+}
+
+.ct-img {
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  background: #252522;
+}
+
+.ct-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* aspect-ratio 1240:676.5 ≈ 16:8.73 — exato do Figma */
+.ct-img--single {
+  aspect-ratio: 1240 / 676.5;
+}
+
+/* portrait — aspect-ratio 608:644 do Figma */
+.ct-img--portrait {
+  aspect-ratio: 608 / 644;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Gallery: fundo branco ───────────────────────────────────────────────── */
+
+.ct-gallery {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Placeholder de imagem mais claro na seção branca */
+.ct-gallery .ct-img {
+  background: #e0ddd8;
+}
+
+/* Cores de texto invertidas na galeria */
+.ct-gallery .ct-section-label {
+  color: #171414;
+}
+
+.ct-gallery .ct-section-body {
+  color: rgba(23, 20, 20, 0.7);
+}
+
+.ct-gallery-head {
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #171414;
+}
+
+/* ─── Outcome ─────────────────────────────────────────────────────────────── */
+
+.ct-outcome {
+  padding: 24px;
+}
+
+.ct-outcome .ct-section {
+  padding: 48px 24px;
+  border-radius: 16px;
+}
+
+/* ─── CTA próximo projeto ────────────────────────────────────────────────── */
+
+.ct-next {
+  padding: 24px;
+}
+
+.ct-next-card {
+  background: #2c2c2c;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.ct-next-header {
+  background: #575757;
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.ct-next-title {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.ct-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f2f2f2;
+  color: #000000;
+  padding: 12px 16px 12px 24px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: 0 4px 13.6px 4px rgba(0, 0, 0, 0.25);
+  transition: opacity var(--transition);
+}
+
+.ct-next-btn:hover {
+  opacity: 0.88;
+}
+
+/* ─── Contato / Footer ───────────────────────────────────────────────────── */
+
+.ct-contact {
+  padding: 24px 24px 0;
+  background: #ffffff;
+}
+
+.ct-contact-inner {
+  background: rgba(45, 22, 22, 0.1);
+  border-radius: 16px 16px 0 0;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 717px;
+  gap: 40px;
+}
+
+.ct-contact-sub {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #b3b3b3;
+}
+
+.ct-contact-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ct-contact-headline {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1.28px;
+  color: #171414;
+}
+
+.ct-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  background: #c32e2e;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: opacity var(--transition);
+}
+
+.ct-contact-btn:hover {
+  opacity: 0.88;
+}
+
+.ct-contact-social {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ct-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #171414;
+  transition: opacity var(--transition);
+}
+
+.ct-social-link:hover {
+  opacity: 0.55;
+}
+
+.ct-copyright {
+  background: #eae8e8;
+  border-top: 1px solid rgba(23, 20, 20, 0.2);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 48px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #171414;
+}
+
+/* ─── Responsive — Mobile ────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+
+  /* Hero — preenche a viewport disponível abaixo da navbar */
+  .ct-hero {
+    padding: 16px;
+    height: calc(100svh - 80px); /* 100svh menos altura da navbar */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ct-hero-img {
+    aspect-ratio: unset; /* remove o aspect-ratio fixo */
+    flex: 1;             /* cresce para preencher o espaço disponível */
+  }
+
+  .ct-hero-meta {
+    bottom: 32px;
+    padding: 0 16px;
+  }
+
+  .ct-hero-company {
+    font-size: 12px;
+  }
+
+  .ct-hero-title {
+    font-size: 40px;
+    letter-spacing: -0.8px;
+  }
+
+  .ct-hero-product {
+    font-size: 16px;
+    font-weight: 600; /* semibold no mobile conforme Figma */
+  }
+
+  /* Content body — empilha verticalmente */
+  .ct-body {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .ct-intro {
+    width: 100%;
+    position: static;
+    padding: 48px 16px;
+    gap: 40px;
+  }
+
+  /* Text sections */
+  .ct-section {
+    flex-direction: column;
+    gap: 24px;
+    padding: 48px 16px;
+  }
+
+  .ct-section-label {
+    width: auto;
+  }
+
+  /* Images */
+  .ct-img-row {
+    padding: 12px 16px;
+  }
+
+  /* triple → 1 coluna no mobile */
+  .ct-img-row--triple {
+    flex-direction: column;
+  }
+
+  /* remove flex-grow no portrait dentro de coluna (aspect-ratio controla a altura) */
+  .ct-img-row--triple .ct-img {
+    flex: none;
+    width: 100%;
+  }
+
+  /* dual → mantém 2 colunas no mobile (conforme Figma) */
+  .ct-img-row--dual {
+    gap: 16px;
+  }
+
+  /* Gallery */
+  .ct-gallery-head {
+    padding: 12px 16px;
+  }
+
+  .ct-outcome {
+    padding: 16px;
+  }
+
+  .ct-outcome .ct-section {
+    padding: 48px 24px;
+  }
+
+  .ct-next {
+    padding: 16px;
+  }
+
+  /* Contact */
+  .ct-contact {
+    padding: 16px 16px 0;
+  }
+
+  .ct-contact-inner {
+    padding: 40px 32px;
+    min-height: 600px;
+  }
+
+  .ct-contact-sub {
+    font-size: 28px;
+  }
+
+  .ct-contact-headline {
+    font-size: 40px;
+    letter-spacing: -0.8px;
+  }
+
+  .ct-contact-btn {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+
+  .ct-copyright {
+    padding: 20px 32px;
+    font-size: 16px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOTION ENHANCEMENTS — "Deliberate Reveal"
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Cross-document page transitions (Level 2 View Transitions API) ──────── */
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-fade-out {
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes vt-slide-in {
+  from { opacity: 0; transform: translateY(18px); }
+}
+
+::view-transition-old(root) {
+  animation: 0.22s ease-out both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.42s cubic-bezier(0.22, 1, 0.36, 1) both vt-slide-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* ── Home footer CTA — shimmer on hover ─────────────────────────────────── */
+
+.home-footer-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-footer-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 55%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-160%);
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.home-footer-cta:hover::after {
+  transform: translateX(310%);
+}
+
+/* ── Nav sliding indicator ───────────────────────────────────────────────── */
+
+.site-nav {
+  position: relative;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background: #C93B2F;
+  border-radius: 1px;
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+/* ── Section label line (case pages) ────────────────────────────────────── */
+
+.ct-label-line {
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  margin-bottom: 7px;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
 }

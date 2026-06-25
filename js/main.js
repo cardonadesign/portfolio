@@ -62,3 +62,26 @@ document.querySelectorAll('a[href^="http"]').forEach(a => {
     }
   } catch (_) {}
 });
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MAGNETIC CTAs
+// Buttons pull gently toward the cursor; snap back with elastic ease on leave.
+// Only runs on non-touch devices where GSAP is available.
+// ═══════════════════════════════════════════════════════════════════════════
+
+if (!isTouch && typeof gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.home-footer-cta, .nav-resume, .ct-contact-btn, .ct-next-btn').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r  = el.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dx = (e.clientX - cx) * 0.28;
+      const dy = (e.clientY - cy) * 0.28;
+      gsap.to(el, { x: dx, y: dy, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+    });
+
+    el.addEventListener('mouseleave', () => {
+      gsap.to(el, { x: 0, y: 0, duration: 0.65, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
+    });
+  });
+}

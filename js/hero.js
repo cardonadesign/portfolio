@@ -5,20 +5,20 @@
 (function initHero() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
-  if (typeof THREE === 'undefined') { canvas.style.display = 'none'; return; }
+  if (typeof THREE === 'undefined') { console.warn('[hero.js] Three.js não carregou'); canvas.style.display = 'none'; return; }
 
   // ── Default config ───────────────────────────────────────────────────────
 
   const DEFAULTS = {
-    color1:     [0.8549, 0.0627, 0.0627],
-    color2:     [0.6235, 0.5961, 0.4353],
-    colorBg:    [0.0800, 0.0800, 0.0800],
-    spread:      0.80,
-    speed:       0.30,
+    color1:     [0.75, 0.05, 0.05],
+    color2:     [0.35, 0.28, 0.18],
+    colorBg:    [0.031, 0.031, 0.024],
+    spread:      1.10,
+    speed:       0.18,
     mouseStr:    0.80,
-    grain:       0.58,
+    grain:       0.42,
     stripeFreq:  0,
-    stripeAmt:   0.29,
+    stripeAmt:   0,
   };
 
   function loadConfig() {
@@ -245,6 +245,11 @@
   const clock = new THREE.Clock();
   let frameId = null;
 
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    renderer.render(scene, camera);
+    return;
+  }
+
   function animate() {
     frameId = requestAnimationFrame(animate);
 
@@ -260,7 +265,7 @@
 
   // Pause when hero scrolls out of view
   let intersectionObserver = null;
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.page-home');
   if (hero && typeof IntersectionObserver !== 'undefined') {
     intersectionObserver = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {

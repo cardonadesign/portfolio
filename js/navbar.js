@@ -20,6 +20,37 @@
     }
   });
 
+  // ── Nav sliding indicator ─────────────────────────────────────────────────
+  // A 2px red line that appears under the active nav link on page load.
+  // Grows in from the left — the View Transitions cross-fade provides
+  // continuity across page changes.
+
+  var siteNav      = document.querySelector('.site-nav');
+  var activeNavLink = siteNav && siteNav.querySelector('.nav-link.is-active');
+
+  if (siteNav && activeNavLink && typeof gsap !== 'undefined') {
+    var indicator = document.createElement('span');
+    indicator.className = 'nav-indicator';
+    siteNav.appendChild(indicator);
+
+    function positionNavIndicator() {
+      var nr = siteNav.getBoundingClientRect();
+      var lr = activeNavLink.getBoundingClientRect();
+      gsap.set(indicator, { x: lr.left - nr.left, width: lr.width });
+    }
+
+    positionNavIndicator();
+    gsap.from(indicator, {
+      scaleX: 0,
+      transformOrigin: 'left center',
+      duration: 0.4,
+      ease: 'power3.out',
+      delay: 0.2,
+    });
+
+    window.addEventListener('resize', positionNavIndicator, { passive: true });
+  }
+
   // ── Scroll: hide on scroll down, show on scroll up ────────────────────────
 
   var lastY    = window.scrollY;
