@@ -105,10 +105,12 @@
   // ─────────────────────────────────────────────────────────────
   if (isTouch) {
     let scrollYOnOpen = 0;
+    let touchStartY   = 0;
 
     function removeEscapeListeners() {
-      window.removeEventListener('scroll',  onScroll);
-      window.removeEventListener('resize',  closeMobileCard);
+      window.removeEventListener('scroll',     onScroll);
+      window.removeEventListener('resize',     closeMobileCard);
+      document.removeEventListener('touchmove', onTouchMove);
     }
 
     function closeMobileCard() {
@@ -119,12 +121,18 @@
     }
 
     function onScroll() {
-      if (Math.abs(window.scrollY - scrollYOnOpen) > 80) closeMobileCard();
+      if (Math.abs(window.scrollY - scrollYOnOpen) > 40) closeMobileCard();
+    }
+
+    // touchmove: fecha ao detectar scroll no iOS (window.scroll pode não disparar durante inércia)
+    function onTouchMove(e) {
+      if (Math.abs(e.touches[0].clientY - touchStartY) > 30) closeMobileCard();
     }
 
     function addEscapeListeners() {
-      window.addEventListener('scroll',  onScroll,        { passive: true });
-      window.addEventListener('resize',  closeMobileCard, { passive: true });
+      window.addEventListener('scroll',      onScroll,        { passive: true });
+      window.addEventListener('resize',      closeMobileCard, { passive: true });
+      document.addEventListener('touchmove', onTouchMove,     { passive: true });
     }
 
     // Tap no trigger: abre/fecha + ativa listeners de escape
@@ -145,11 +153,11 @@
       }
     });
 
-    // Toque fora do card e do trigger fecha
+    // Toque no card ou fora (qualquer coisa exceto o trigger) → fecha
     document.addEventListener('touchstart', (e) => {
-      if (!trigger.contains(e.target) && !card.contains(e.target)) {
-        closeMobileCard();
-      }
+      if (!card.classList.contains('is-visible')) return;
+      touchStartY = e.touches[0].clientY;
+      if (!trigger.contains(e.target)) closeMobileCard();
     }, { passive: true });
 
     // Hambúrguer abre o menu mobile → fecha o card
